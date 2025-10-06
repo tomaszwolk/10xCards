@@ -1,0 +1,63 @@
+<conversation_summary>
+<decisions>
+1. Skupienie na studentach jako głównej grupie docelowej, z naciskiem na prostotę i brak zaawansowanych opcji.
+2. Użytkownik określa dziedzinę wiedzy przed generowaniem fiszek przez AI; użytkownik jest odpowiedzialny za zatwierdzanie, edycję lub odrzucanie fiszek, w tym sprawdzanie błędów.
+3. Prosty interfejs z podstawowym polem tekstowym do wklejania treści, bez zaawansowanych funkcji.
+4. System kont uproszczony do rejestracji email/hasło z opcją sesji gościnnej.
+5. Wyłącznie web UI zintegrowany z gotowym open-source algorytmem spaced repetition (wybrano spaced-repetition-js).
+6. Tracking akceptacji fiszek poprzez tabelę z kolumnami dla fiszek AI i statusu (akceptacja/edycja/odrzucenie), przechowywaną lokalnie w przeglądarce z opcją eksportu do JSON/CSV.
+7. Brak testów A/B; użytkownik samodzielnie decyduje o akceptacji fiszek.
+8. Użycie jednego dostawcy AI: Gemini API, z limitem 50 fiszek/dzień na użytkownika i fallbackiem na manualne tworzenie.
+9. 1-miesięczny sprint dla MVP z podziałem na fazy: Faza 1 (dni 1-7: core generowanie AI), Faza 2 (dni 8-14: UI i edycja), Faza 3 (dni 15-21: integracja powtórek), Faza 4 (dni 22-30: testy i deployment); 1 fullstack developer, z 20% buforem czasu i rozważeniem narzędzi low-code.
+10. Minimalne zbieranie danych: tylko email, ID fiszek i daty powtórek; polityka "no tracking" poza niezbędnym; dane przechowywane lokalnie z automatycznym czyszczeniem po 24h lub zamknięciu sesji; sanitizacja inputów i użycie secure localStorage (np. IndexedDB).
+11. 5-7 podstawowych presetów dziedzin w polu tekstowym, z opcją dodawania przez użytkownika; liniowy flow: wklej tekst → określ dziedzinę → generuj.
+12. Struktura fiszki: prosty format pytanie-odpowiedź, bez dodatkowych pól; edycja ograniczona do tekstu.
+13. Testy biblioteki spaced-repetition-js w fazie 3 z fallbackiem na custom scheduler; proste testy E2E w fazie 4 skupione na output AI; powiadomienia o limitach API i promocja manualnego tworzenia.
+</decisions>
+
+<matched_recommendations>
+1. Podkreślić w PRD fokus na automatyzacji ekstrakcji faktów z tekstu, aby rozwiązać problem czasu u studentów.
+2. Zaimplementować proste pole tekstowe z opcjonalnymi presetami dziedzin (np. matematyka, historia) dla szybkiego startu.
+3. Zaprojektować liniowy flow użytkownika: wklej tekst → określ dziedzinę → generuj, minimalizując kroki.
+4. Ograniczyć system kont do email/hasło z sesją gościnną, z automatycznym czyszczeniem po 24h i ostrzeżeniami.
+5. Wybrać bibliotekę spaced-repetition-js z testami na localStorage i fallbackiem custom, bez custom kodowania algorytmu.
+6. Przechowywać dane lokalnie dla prywatności, z eksportem do JSON/CSV i bez importu na MVP.
+7. Ustawić limit 50 fiszek/dzień z czytelnymi powiadomieniami i fallbackiem manualnym, aby kontrolować koszty.
+8. Zdefiniować fazy sprintu z priorytetem na 1-2, buforem 20% i low-code dla UI; testy E2E na output AI.
+9. Wymagać sanitizacji inputów i secure storage (IndexedDB) dla minimalnych standardów prywatności bez backendu.
+10. Standaryzować fiszki na format Q&A bez dodatkowych pól; edycja tylko tekstowa na MVP, z planem na multimedia później.
+</matched_recommendations>
+
+<prd_planning_summary>
+a. Główne wymagania funkcjonalne produktu: 
+   - Generowanie fiszek przez AI (Gemini API) na podstawie wklejonego tekstu, z określeniem dziedziny (presety 5-7 + opcja dodawania); limit 50 fiszek/dzień.
+   - Manualne tworzenie, przeglądanie, edycja (tylko tekst) i usuwanie fiszek w formacie pytanie-odpowiedź.
+   - Uproszczony system kont: rejestracja email/hasło + sesja gościnna (czyszczenie po 24h).
+   - Lokalne przechowywanie fiszek i danych powtórek w przeglądarce (localStorage/IndexedDB) z eksportem do JSON/CSV.
+   - Integracja z open-source biblioteką spaced-repetition-js dla powtórek (z testami i fallbackiem custom).
+   - Tracking akceptacji fiszek AI poprzez wewnętrzną tabelę (status: akceptacja/edycja/odrzucenie).
+   - Powiadomienia o limitach API i promocja manualnego tworzenia.
+
+b. Kluczowe historie użytkownika i ścieżki korzystania: 
+   - Student wkleja notatki tekstowe → określa dziedzinę (preset lub tekst) → AI generuje fiszki → przegląda, akceptuje/edytuje/odrzuca (tracking w tabeli) → zapisuje lokalnie.
+   - Użytkownik loguje się (email/hasło) lub używa sesji gościnnej → tworzy fiszki manualnie → przegląda i edytuje → inicjuje powtórki via spaced repetition (web UI).
+   - Użytkownik eksportuje fiszki dla backupu; po przekroczeniu limitu AI przechodzi do manualnego tworzenia z powiadomieniem.
+   - Flow jest liniowy i prosty, web-only, responsywny, bez backendu dla MVP.
+
+c. Ważne kryteria sukcesu i sposoby ich mierzenia: 
+   - 75% fiszek AI akceptowane przez użytkownika: mierzone lokalnie via tabela trackingu (procent akceptacji vs. generowanych).
+   - 75% fiszek tworzonych z wykorzystaniem AI: mierzone analogicznie poprzez tracking w aplikacji (proporcja AI vs. manualne).
+   - Mierzenie wbudowane w app (lokalne metryki, eksport dla analizy); brak zewnętrznych ankiet; sukces walidowany w fazie 4 testów.
+
+d. Wszelkie nierozwiązane kwestie lub obszary wymagające dalszego wyjaśnienia: 
+   - Konkretne 5-7 presetów dziedzin (np. przykłady jak matematyka, biologia) nie zostały sprecyzowane.
+   - Szczegóły struktury tabeli trackingu (np. format bazy danych lokalnej, UI wizualizacji).
+   - Potencjalne koszty operacyjne Gemini API (estymacja na podstawie limitów) i strategia skalowania po MVP.
+</prd_planning_summary>
+
+<unresolved_issues>
+- Wybór konkretnych 5-7 presetów dziedzin (np. lista przykładowych: matematyka, historia, biologia, język angielski, chemia, fizyka, literatura) – wymaga finalizacji dla implementacji.
+- Szczegółowa implementacja tabeli trackingu akceptacji (np. schemat danych w localStorage, wizualizacja w UI) – brak precyzyjnych specyfikacji.
+- Potencjalne edge cases w localStorage (np. limity pojemności przeglądarki dla dużych zestawów fiszek) i strategia obsługi.
+</unresolved_issues>
+</conversation_summary>

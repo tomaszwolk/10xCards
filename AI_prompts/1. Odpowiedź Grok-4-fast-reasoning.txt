@@ -1,0 +1,123 @@
+1. Jakie są główne grupy docelowe użytkowników (np. studenci, profesjonaliści uczący się języków, nauczyciele), i jakie specyficzne bolączki zgłaszają w kontekście tworzenia fiszek?
+
+Rekomendacja: Zidentyfikowanie grup docelowych pozwoli na dostosowanie PRD do ich potrzeb, np. poprzez fokus na prostocie dla studentów lub zaawansowanych opcjach dla nauczycieli, co zwiększy adopcję produktu.
+
+2. Czy generowanie fiszek przez AI powinno obsługiwać określone języki lub dziedziny wiedzy (np. nauki ścisłe, humanistyczne), i jak radzić sobie z błędami w generowaniu?
+
+Rekomendacja: Określenie wsparcia językowego i dziedzinowego w MVP zapewni szerszy zasięg, a plan obsługi błędów (np. poprzez edycję) podniesie akceptowalność do 75%.
+
+3. W jaki sposób użytkownicy będą wprowadzać tekst do generowania fiszek – czy wystarczy podstawowe pole tekstowe, czy potrzebne są dodatkowe funkcje jak podział na sekcje?
+
+Rekomendacja: Priorytetyzacja prostego interfejsu kopiuj-wklej w MVP, z opcją podziału sekcji w przyszłych iteracjach, aby zminimalizować barierę wejścia.
+
+4. Jakie są priorytety wśród funkcjonalności MVP, np. czy system kont użytkowników jest krytyczny od razu, czy może być uproszczony na start?
+
+Rekomendacja: Użyć MoSCoW method do priorytetyzacji, skupiając się najpierw na generowaniu i przeglądaniu fiszek, co pozwoli na szybki launch i testowanie kryteriów sukcesu.
+
+5. Jakie doświadczenie użytkownika oczekujesz w procesie przeglądania i powtórek fiszek – np. interfejs mobilny-first, czy desktopowy, z jaką częstotliwością powtórek?
+
+Rekomendacja: Zaprojektować responsywny web UI zintegrowany z gotowym algorytmem (np. open-source spaced repetition), aby zapewnić płynne doświadczenie bez potrzeby aplikacji mobilnej na MVP.
+
+6. Jak mierzyć kryterium "75% fiszek wygenerowanych przez AI jest akceptowane" – poprzez metryki w aplikacji, czy dodatkowe ankiety?
+
+Rekomendacja: Wbudować analitykę w aplikację (np. tracking akceptacji/edycji), co pozwoli na automatyczne mierzenie i iterację, bez polegania na zewnętrznych narzędziach.
+
+7. Jakie są potencjalne ryzyka związane z jakością AI, np. halucynacje lub brak dokładności w generowaniu fiszek edukacyjnych?
+
+Rekomendacja: W PRD uwzględnić fallback na manualne tworzenie i testy A/B z różnymi modelami AI, aby zmitigować ryzyko i osiągnąć 75% akceptacji.
+
+8. Czy planowane są jakieś integracje z zewnętrznymi usługami AI (np. OpenAI, Grok) i jak to wpłynie na koszty operacyjne?
+
+Rekomendacja: Wybrać jednego dostawcę AI na MVP dla prostoty, z estymacją kosztów w PRD, aby uniknąć nieprzewidzianych wydatków i skupić się na core funkcjonalnościach.
+
+9. Jaki jest oczekiwany harmonogram rozwoju MVP i dostępne zasoby (np. zespół deweloperski, budżet na AI)?
+
+Rekomendacja: Zaproponować 3-miesięczny sprint dla MVP, z podziałem na fazy (generowanie, konta, powtórki), co pozwoli na realistyczne planowanie i wczesne testy z użytkownikami.
+
+10. Jakie wyzwania przewidujesz w zakresie prywatności danych użytkowników, zwłaszcza przy przechowywaniu fiszek edukacyjnych?
+
+Rekomendacja: W PRD zdefiniować zgodność z GDPR od startu, z minimalnym zbieraniem danych, aby zbudować zaufanie i uniknąć ryzyk prawnych w przyszłości.
+
+-----------------------------
+
+1. Jakie konkretne bolączki studentów w tworzeniu fiszek chcesz adresować w pierwszej kolejności, np. brak czasu na formułowanie pytań czy trudności w ekstrakcji kluczowych faktów z notatek?
+
+Rekomendacja: W PRD podkreślić fokus na automatyzacji ekstrakcji faktów, co bezpośrednio rozwiąże główny problem czasu, zwiększając użyteczność dla studentów.
+
+2. W jaki sposób użytkownik będzie określał dziedzinę wiedzy – poprzez pole tekstowe, listę wyboru czy automatyczne wykrywanie na podstawie tekstu?
+
+Rekomendacja: Zaimplementować proste pole tekstowe z opcjonalnymi presetami dziedzin (np. matematyka, historia), aby ułatwić studentom szybki start bez komplikacji.
+
+3. Jak ma wyglądać przepływ użytkownika po wklejeniu tekstu – natychmiastowe generowanie fiszek, czy z potwierdzeniem dziedziny najpierw?
+
+Rekomendacja: Zaprojektować liniowy flow: wklej tekst → określ dziedzinę → generuj, co zapewni prostotę i minimalizuje kroki dla skupionych studentów.
+
+4. Jakie elementy ma zawierać uproszczony system kont – podstawowa rejestracja email/hasło, czy tylko sesja bez trwałego logowania na MVP?
+
+Rekomendacja: Ograniczyć do email/hasło z opcją "gościnnej" sesji dla testów, co pozwoli na szybkie wdrożenie i skupienie na core fiszkach bez złożonej autentykacji.
+
+5. Jaki konkretny open-source algorytm spaced repetition planujesz zintegrować, np. implementacja SM-2 czy biblioteka jak spaced-repetition?
+
+Rekomendacja: Wybrać prostą bibliotekę jak spaced-repetition-js dla łatwej integracji w web UI, co przyspieszy rozwój i zapewni niezawodne powtórki bez custom kodowania.
+
+6. Czy tabela trackingu akceptacji fiszek będzie przechowywana lokalnie u użytkownika, czy na serwerze, i jak to wpłynie na metryki sukcesu?
+
+Rekomendacja: Przechowywać dane lokalnie w przeglądarce dla MVP, z opcją eksportu, co uprości prywatność i pozwoli na szybkie mierzenie 75% akceptacji bez backendu.
+
+7. Jakie limity użycia Gemini API przewidujesz dla użytkowników (np. liczba fiszek na sesję), biorąc pod uwagę koszty i throttling?
+
+Rekomendacja: Ustawić limit 50 fiszek/dzień na użytkownika w PRD, z fallbackiem na manualne tworzenie, aby kontrolować koszty i uniknąć przerw w doświadczeniu.
+
+8. Jak podzielić 1-miesięczny sprint na fazy – np. tydzień 1: generowanie fiszek, tydzień 2: konta i edycja, tygodnie 3-4: powtórki i testy?
+
+Rekomendacja: Zdefiniować fazy w PRD jako: Faza 1 (dni 1-7): core generowanie AI; Faza 2 (dni 8-14): UI i edycja; Faza 3 (dni 15-21): integracja powtórek; Faza 4 (dni 22-30): testy i deployment, dla realistycznego tempa.
+
+9. Jakie zasoby ludzkie i techniczne są dostępne na 1-miesięczny sprint – np. liczba developerów, doświadczenie z React/Astro i dostęp do Gemini?
+
+Rekomendacja: Założyć 2-3 developerów z frontend skills w PRD, z priorytetem na szybkie prototypowanie, co pozwoli na osiągnięcie MVP bez opóźnień.
+
+10. Jakie minimalne dane użytkownika będą zbierane poza fiszkami – np. email dla konta i timestampy powtórek, bez żadnych analityk behawioralnych?
+
+Rekomendacja: Ograniczyć do email, ID fiszek i dat powtórek w PRD, z polityką "no tracking" poza niezbędnym, aby spełnić kryteria prywatności i budować zaufanie studentów.
+
+------------------
+
+1. Jakie konkretne presety dziedzin wiedzy planujesz zaimplementować w pole tekstowe (np. matematyka, biologia, historia), i czy będą one rozszerzalne w przyszłości?
+
+Rekomendacja: Ograniczyć do 5-7 podstawowych presetów w MVP, aby zachować prostotę, z opcją dodawania przez użytkownika w ustawieniach, co ułatwi dostosowanie do potrzeb studentów.
+
+2. Jak ma wyglądać struktura pojedynczej fiszki generowanej przez AI – np. front/back z pytaniem/odpowiedzią, czy dodatkowe pola jak tagi lub źródła?
+
+Rekomendacja: Standaryzować na prosty format pytanie-odpowiedź w PRD, bez dodatkowych pól na start, co przyspieszy generowanie i edycję, skupiając się na core wartości dla studentów.
+
+3. W procesie edycji fiszek, czy użytkownik będzie mógł dodawać multimedia (np. obrazy) lub tylko tekst, biorąc pod uwagę prostotę MVP?
+
+Rekomendacja: Ograniczyć edycję do tekstu w MVP, z planem na multimedia w post-MVP, aby uniknąć komplikacji w integracji z lokalnym przechowywaniem i utrzymać fokus na szybkości.
+
+4. Dla gościnnej sesji, jak długo dane sesji mają być przechowywane lokalnie, i co dzieje się po wylogowaniu lub zamknięciu przeglądarki?
+
+Rekomendacja: Ustawić automatyczne czyszczenie po 24h lub zamknięciu sesji w PRD, z ostrzeżeniem użytkownika, co zachęci do rejestracji bez utraty prostoty.
+
+5. Czy biblioteka spaced-repetition-js wymaga dodatkowych adaptacji dla web UI, np. integracji z lokalnym storage, i jakie są jej ograniczenia w porównaniu do Anki?
+
+Rekomendacja: Przetestować bibliotekę na zgodność z localStorage w fazie 3 sprintu, z fallbackiem na prosty custom scheduler, aby zapewnić niezawodność powtórek bez zewnętrznych zależności.
+
+6. Jak opcja eksportu fiszek ma być zaimplementowana – np. format CSV, JSON czy integracja z Anki – i czy import będzie dostępny na MVP?
+
+Rekomendacja: Obsłużyć eksport do JSON/CSV w PRD dla łatwego backupu, bez importu na start, co uprości rozwój i pozwoli użytkownikom na przenoszenie danych lokalnie.
+
+7. Jak limit 50 fiszek/dzień wpłynie na doświadczenie użytkownika, i czy planujesz komunikację o limicie (np. powiadomienia) lub ratowanie po przekroczeniu?
+
+Rekomendacja: Dodać czytelne powiadomienia o limicie i promowanie manualnego tworzenia jako alternatywy w UI, co zminimalizuje frustrację i utrzyma zaangażowanie studentów.
+
+8. Z jednym fullstack developerem, czy 1-miesięczny sprint jest realistyczny, biorąc pod uwagę obciążenie fazami – np. potrzeba pomocy zewnętrznej w testach?
+
+Rekomendacja: W PRD uwzględnić buffer 20% czasu na nieprzewidziane problemy, z priorytetem na fazy 1-2, i rozważyć narzędzia low-code dla UI, aby zmieścić się w harmonogramie.
+
+9. Jak planujesz testowanie integracji z Gemini API – np. unit testy dla promptów czy end-to-end dla generowania fiszek?
+
+Rekomendacja: Zdefiniować proste testy E2E w fazie 4, skupiając się na jakości outputu AI, co zapewni stabilność bez nadmiernego obciążenia jednego developera.
+
+10. Ponieważ dane są przechowywane lokalnie, jak zapewnić bezpieczeństwo email i fiszek przed atakami XSS, i czy potrzebna jest walidacja inputu?
+
+Rekomendacja: W PRD wymagać sanitizacji inputów i użycia secure localStorage (np. z IndexedDB dla wrażliwych danych), co spełni minimalne standardy prywatności bez backendu.
